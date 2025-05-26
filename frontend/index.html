@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Integracja: Przemysł i Środowisko</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    select, button { margin-right: 10px; padding: 5px 10px; }
+  </style>
+</head>
+<body>
+  <h1>Dane zintegrowane: Przemysł i środowisko</h1>
+
+  <label for="dataType">Rodzaj danych:</label>
+  <select id="dataType">
+    <option value="industrial">Produkcja przemysłowa</option>
+    <option value="emissions">Emisja zanieczyszczeń</option>
+    <option value="wastewater">Ścieki przemysłowe</option>
+  </select>
+
+  <button onclick="fetchData()">Pobierz dane</button>
+
+  <div id="output"></div>
+
+  <script>
+    async function fetchData() {
+      const type = document.getElementById("dataType").value;
+      const response = await fetch(`http://localhost:8000/${type}/`);
+      const data = await response.json();
+
+      let table = "<table><tr>";
+
+      if (data.length === 0) {
+        document.getElementById("output").innerHTML = "Brak danych.";
+        return;
+      }
+
+      // Nagłówki
+      Object.keys(data[0]).forEach(key => {
+        if (key !== "_id") table += `<th>${key}</th>`;
+      });
+      table += "</tr>";
+
+      // Wiersze
+      data.forEach(row => {
+        table += "<tr>";
+        Object.keys(row).forEach(key => {
+          if (key !== "_id") table += `<td>${row[key]}</td>`;
+        });
+        table += "</tr>";
+      });
+
+      table += "</table>";
+      document.getElementById("output").innerHTML = table;
+    }
+  </script>
+</body>
+</html>

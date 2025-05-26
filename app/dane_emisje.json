@@ -1,0 +1,242 @@
+[
+  {
+    "year":2010,
+    "pollutant":"WYSZCZEGÓLNIENIE",
+    "amount_tonnes":2010.0
+  },
+  {
+    "year":2015,
+    "pollutant":"WYSZCZEGÓLNIENIE",
+    "amount_tonnes":2015.0
+  },
+  {
+    "year":2018,
+    "pollutant":"WYSZCZEGÓLNIENIE",
+    "amount_tonnes":2018.0
+  },
+  {
+    "year":2019,
+    "pollutant":"WYSZCZEGÓLNIENIE",
+    "amount_tonnes":2019.0
+  },
+  {
+    "year":2010,
+    "pollutant":"pyłowych",
+    "amount_tonnes":5.2
+  },
+  {
+    "year":2015,
+    "pollutant":"pyłowych",
+    "amount_tonnes":3.9
+  },
+  {
+    "year":2018,
+    "pollutant":"pyłowych",
+    "amount_tonnes":2.6
+  },
+  {
+    "year":2019,
+    "pollutant":"pyłowych",
+    "amount_tonnes":2.4
+  },
+  {
+    "year":2010,
+    "pollutant":"w tym pyły ze spalania paliw",
+    "amount_tonnes":4.7
+  },
+  {
+    "year":2015,
+    "pollutant":"w tym pyły ze spalania paliw",
+    "amount_tonnes":3.4
+  },
+  {
+    "year":2018,
+    "pollutant":"w tym pyły ze spalania paliw",
+    "amount_tonnes":2.1
+  },
+  {
+    "year":2019,
+    "pollutant":"w tym pyły ze spalania paliw",
+    "amount_tonnes":2.0
+  },
+  {
+    "year":2010,
+    "pollutant":"gazowych",
+    "amount_tonnes":29506.8
+  },
+  {
+    "year":2015,
+    "pollutant":"gazowych",
+    "amount_tonnes":28568.0
+  },
+  {
+    "year":2018,
+    "pollutant":"gazowych",
+    "amount_tonnes":31629.7
+  },
+  {
+    "year":2019,
+    "pollutant":"gazowych",
+    "amount_tonnes":32541.0
+  },
+  {
+    "year":2010,
+    "pollutant":"w tym: dwutlenek siarki",
+    "amount_tonnes":97.2
+  },
+  {
+    "year":2015,
+    "pollutant":"w tym: dwutlenek siarki",
+    "amount_tonnes":68.4
+  },
+  {
+    "year":2018,
+    "pollutant":"w tym: dwutlenek siarki",
+    "amount_tonnes":27.3
+  },
+  {
+    "year":2019,
+    "pollutant":"w tym: dwutlenek siarki",
+    "amount_tonnes":30.3
+  },
+  {
+    "year":2010,
+    "pollutant":"tlenek węgla",
+    "amount_tonnes":17.4
+  },
+  {
+    "year":2015,
+    "pollutant":"tlenek węgla",
+    "amount_tonnes":17.3
+  },
+  {
+    "year":2018,
+    "pollutant":"tlenek węgla",
+    "amount_tonnes":11.4
+  },
+  {
+    "year":2019,
+    "pollutant":"tlenek węgla",
+    "amount_tonnes":10.6
+  },
+  {
+    "year":2010,
+    "pollutant":"tlenki azotu a",
+    "amount_tonnes":50.5
+  },
+  {
+    "year":2015,
+    "pollutant":"tlenki azotu a",
+    "amount_tonnes":34.8
+  },
+  {
+    "year":2018,
+    "pollutant":"tlenki azotu a",
+    "amount_tonnes":23.4
+  },
+  {
+    "year":2019,
+    "pollutant":"tlenki azotu a",
+    "amount_tonnes":25.1
+  },
+  {
+    "year":2010,
+    "pollutant":"dwutlenek węgla",
+    "amount_tonnes":29331.5
+  },
+  {
+    "year":2015,
+    "pollutant":"dwutlenek węgla",
+    "amount_tonnes":28439.6
+  },
+  {
+    "year":2018,
+    "pollutant":"dwutlenek węgla",
+    "amount_tonnes":31561.9
+  },
+  {
+    "year":2019,
+    "pollutant":"dwutlenek węgla",
+    "amount_tonnes":32469.5
+  },
+  {
+    "year":2010,
+    "pollutant":"pyłowe",
+    "amount_tonnes":1463.3
+  },
+  {
+    "year":2015,
+    "pollutant":"pyłowe",
+    "amount_tonnes":1671.3
+  },
+  {
+    "year":2018,
+    "pollutant":"pyłowe",
+    "amount_tonnes":2134.8
+  },
+  {
+    "year":2019,
+    "pollutant":"pyłowe",
+    "amount_tonnes":2094.2
+  },
+  {
+    "year":2010,
+    "pollutant":"gazowe (bez dwutlenku węgla)",
+    "amount_tonnes":117.5
+  },
+  {
+    "year":2015,
+    "pollutant":"gazowe (bez dwutlenku węgla)",
+    "amount_tonnes":146.7
+  },
+  {
+    "year":2018,
+    "pollutant":"gazowe (bez dwutlenku węgla)",
+    "amount_tonnes":244.2
+  },
+  {
+    "year":2019,
+    "pollutant":"gazowe (bez dwutlenku węgla)",
+    "amount_tonnes":252.1
+  },
+  {
+    "year":2010,
+    "pollutant":"pyłowych",
+    "amount_tonnes":99.6
+  },
+  {
+    "year":2015,
+    "pollutant":"pyłowych",
+    "amount_tonnes":99.8
+  },
+  {
+    "year":2018,
+    "pollutant":"pyłowych",
+    "amount_tonnes":99.9
+  },
+  {
+    "year":2019,
+    "pollutant":"pyłowych",
+    "amount_tonnes":99.9
+  },
+  {
+    "year":2010,
+    "pollutant":"gazowych (bez dwutlenku węgla)",
+    "amount_tonnes":40.1
+  },
+  {
+    "year":2015,
+    "pollutant":"gazowych (bez dwutlenku węgla)",
+    "amount_tonnes":53.3
+  },
+  {
+    "year":2018,
+    "pollutant":"gazowych (bez dwutlenku węgla)",
+    "amount_tonnes":78.3
+  },
+  {
+    "year":2019,
+    "pollutant":"gazowych (bez dwutlenku węgla)",
+    "amount_tonnes":77.9
+  }
+]
