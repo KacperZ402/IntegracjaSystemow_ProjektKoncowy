@@ -1,14 +1,13 @@
-# Użycie lekkiego obrazu z Pythonem
-FROM python:3.10-slim
+FROM python:3.11-slim
 
-# Ustawienie katalogu roboczego
+# Ustaw katalog roboczy
 WORKDIR /app
 
-# Skopiowanie plików
-COPY . .
+# Skopiuj tylko zawartość folderu `app`, nie samego folderu
+COPY app ./app
+COPY frontend ./frontend
+COPY requirements.txt .
 
-# Instalacja zależności
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Uruchomienie FastAPI
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
