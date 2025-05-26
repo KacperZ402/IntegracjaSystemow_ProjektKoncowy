@@ -1,0 +1,282 @@
+[
+  {
+    "year":2010,
+    "category":"WYSZCZEGÓLNIENIE",
+    "volume_hm3":2010.0
+  },
+  {
+    "year":2015,
+    "category":"WYSZCZEGÓLNIENIE",
+    "volume_hm3":2015.0
+  },
+  {
+    "year":2018,
+    "category":"WYSZCZEGÓLNIENIE",
+    "volume_hm3":2018.0
+  },
+  {
+    "year":2019,
+    "category":"WYSZCZEGÓLNIENIE",
+    "volume_hm3":2019.0
+  },
+  {
+    "year":2010,
+    "category":"OGÓŁEM",
+    "volume_hm3":2637.4
+  },
+  {
+    "year":2015,
+    "category":"OGÓŁEM",
+    "volume_hm3":2613.6
+  },
+  {
+    "year":2018,
+    "category":"OGÓŁEM",
+    "volume_hm3":2289.2
+  },
+  {
+    "year":2019,
+    "category":"OGÓŁEM",
+    "volume_hm3":2313.6
+  },
+  {
+    "year":2010,
+    "category":"odprowadzone bezpośrednio z zakładów a",
+    "volume_hm3":2403.3
+  },
+  {
+    "year":2015,
+    "category":"odprowadzone bezpośrednio z zakładów a",
+    "volume_hm3":2408.3
+  },
+  {
+    "year":2018,
+    "category":"odprowadzone bezpośrednio z zakładów a",
+    "volume_hm3":2070.3
+  },
+  {
+    "year":2019,
+    "category":"odprowadzone bezpośrednio z zakładów a",
+    "volume_hm3":2089.3
+  },
+  {
+    "year":2010,
+    "category":"w tym wody chłodnicze",
+    "volume_hm3":2365.2
+  },
+  {
+    "year":2015,
+    "category":"w tym wody chłodnicze",
+    "volume_hm3":2367.3
+  },
+  {
+    "year":2018,
+    "category":"w tym wody chłodnicze",
+    "volume_hm3":2019.8
+  },
+  {
+    "year":2019,
+    "category":"w tym wody chłodnicze",
+    "volume_hm3":2039.5
+  },
+  {
+    "year":2010,
+    "category":"odprowadzone siecią kanalizacyjną",
+    "volume_hm3":234.1
+  },
+  {
+    "year":2015,
+    "category":"odprowadzone siecią kanalizacyjną",
+    "volume_hm3":205.3
+  },
+  {
+    "year":2018,
+    "category":"odprowadzone siecią kanalizacyjną",
+    "volume_hm3":218.9
+  },
+  {
+    "year":2019,
+    "category":"odprowadzone siecią kanalizacyjną",
+    "volume_hm3":224.3
+  },
+  {
+    "year":2010,
+    "category":"W tym ścieki wymagające oczyszczania",
+    "volume_hm3":272.2
+  },
+  {
+    "year":2015,
+    "category":"W tym ścieki wymagające oczyszczania",
+    "volume_hm3":246.3
+  },
+  {
+    "year":2018,
+    "category":"W tym ścieki wymagające oczyszczania",
+    "volume_hm3":269.5
+  },
+  {
+    "year":2019,
+    "category":"W tym ścieki wymagające oczyszczania",
+    "volume_hm3":274.1
+  },
+  {
+    "year":2010,
+    "category":"oczyszczane",
+    "volume_hm3":221.4
+  },
+  {
+    "year":2015,
+    "category":"oczyszczane",
+    "volume_hm3":239.4
+  },
+  {
+    "year":2018,
+    "category":"oczyszczane",
+    "volume_hm3":264.3
+  },
+  {
+    "year":2019,
+    "category":"oczyszczane",
+    "volume_hm3":264.7
+  },
+  {
+    "year":2010,
+    "category":"mechanicznie",
+    "volume_hm3":4.0
+  },
+  {
+    "year":2015,
+    "category":"mechanicznie",
+    "volume_hm3":4.1
+  },
+  {
+    "year":2018,
+    "category":"mechanicznie",
+    "volume_hm3":3.2
+  },
+  {
+    "year":2019,
+    "category":"mechanicznie",
+    "volume_hm3":3.2
+  },
+  {
+    "year":2010,
+    "category":"chemicznie b",
+    "volume_hm3":5.5
+  },
+  {
+    "year":2015,
+    "category":"chemicznie b",
+    "volume_hm3":2.8
+  },
+  {
+    "year":2018,
+    "category":"chemicznie b",
+    "volume_hm3":8.3
+  },
+  {
+    "year":2019,
+    "category":"chemicznie b",
+    "volume_hm3":8.2
+  },
+  {
+    "year":2010,
+    "category":"biologicznie",
+    "volume_hm3":54.6
+  },
+  {
+    "year":2015,
+    "category":"biologicznie",
+    "volume_hm3":50.7
+  },
+  {
+    "year":2018,
+    "category":"biologicznie",
+    "volume_hm3":55.2
+  },
+  {
+    "year":2019,
+    "category":"biologicznie",
+    "volume_hm3":53.6
+  },
+  {
+    "year":2010,
+    "category":"z podwyższonym usuwaniem biogenów",
+    "volume_hm3":157.4
+  },
+  {
+    "year":2015,
+    "category":"z podwyższonym usuwaniem biogenów",
+    "volume_hm3":181.8
+  },
+  {
+    "year":2018,
+    "category":"z podwyższonym usuwaniem biogenów",
+    "volume_hm3":197.6
+  },
+  {
+    "year":2019,
+    "category":"z podwyższonym usuwaniem biogenów",
+    "volume_hm3":199.8
+  },
+  {
+    "year":2010,
+    "category":"nieoczyszczane",
+    "volume_hm3":50.8
+  },
+  {
+    "year":2015,
+    "category":"nieoczyszczane",
+    "volume_hm3":6.9
+  },
+  {
+    "year":2018,
+    "category":"nieoczyszczane",
+    "volume_hm3":5.1
+  },
+  {
+    "year":2019,
+    "category":"nieoczyszczane",
+    "volume_hm3":9.4
+  },
+  {
+    "year":2010,
+    "category":"odprowadzone bezpośrednio z zakładów",
+    "volume_hm3":0.3
+  },
+  {
+    "year":2015,
+    "category":"odprowadzone bezpośrednio z zakładów",
+    "volume_hm3":4.0
+  },
+  {
+    "year":2018,
+    "category":"odprowadzone bezpośrednio z zakładów",
+    "volume_hm3":5.1
+  },
+  {
+    "year":2019,
+    "category":"odprowadzone bezpośrednio z zakładów",
+    "volume_hm3":5.7
+  },
+  {
+    "year":2010,
+    "category":"odprowadzone siecią kanalizacyjną",
+    "volume_hm3":50.5
+  },
+  {
+    "year":2015,
+    "category":"odprowadzone siecią kanalizacyjną",
+    "volume_hm3":2.9
+  },
+  {
+    "year":2018,
+    "category":"odprowadzone siecią kanalizacyjną",
+    "volume_hm3":0.0
+  },
+  {
+    "year":2019,
+    "category":"odprowadzone siecią kanalizacyjną",
+    "volume_hm3":3.6
+  }
+]

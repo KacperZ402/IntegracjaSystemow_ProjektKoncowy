@@ -1,61 +1,52 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Integracja: Przemysł i Środowisko</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background-color: #f2f2f2; }
-    select, button { margin-right: 10px; padding: 5px 10px; }
-  </style>
+    <meta charset="UTF-8">
+    <title>Projekt Integracji</title>
+    <script defer src="/static/app.js"></script>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <h1>Dane zintegrowane: Przemysł i środowisko</h1>
+    <h1>Integracja danych – Panel użytkownika</h1>
 
-  <label for="dataType">Rodzaj danych:</label>
-  <select id="dataType">
-    <option value="industrial">Produkcja przemysłowa</option>
-    <option value="emissions">Emisja zanieczyszczeń</option>
-    <option value="wastewater">Ścieki przemysłowe</option>
-  </select>
+    <section>
+        <h2>🔐 Logowanie</h2>
+        <input type="text" id="username" placeholder="Login">
+        <input type="password" id="password" placeholder="Hasło">
+        <button onclick="login()">Zaloguj</button>
+        <p id="token-status"></p>
+    </section>
 
-  <button onclick="fetchData()">Pobierz dane</button>
+    <section>
+        <h2>📤 Eksport danych</h2>
+        <select id="collection-export">
+            <option value="industrial">Przemysł</option>
+            <option value="emissions">Emisje</option>
+            <option value="wastewater">Ścieki</option>
+        </select>
+        <select id="format-export">
+            <option value="json">JSON</option>
+            <option value="xml">XML</option>
+            <option value="yaml">YAML</option>
+        </select>
+        <button onclick="exportData()">Eksportuj</button>
+    </section>
 
-  <div id="output"></div>
+    <section>
+        <h2>📥 Import danych</h2>
+        <select id="collection-import">
+            <option value="industrial">Przemysł</option>
+            <option value="emissions">Emisje</option>
+            <option value="wastewater">Ścieki</option>
+        </select>
+        <input type="file" id="import-file">
+        <button onclick="importData()">Importuj</button>
+    </section>
 
-  <script>
-    async function fetchData() {
-      const type = document.getElementById("dataType").value;
-      const response = await fetch(`http://localhost:8000/${type}/`);
-      const data = await response.json();
-
-      let table = "<table><tr>";
-
-      if (data.length === 0) {
-        document.getElementById("output").innerHTML = "Brak danych.";
-        return;
-      }
-
-      // Nagłówki
-      Object.keys(data[0]).forEach(key => {
-        if (key !== "_id") table += `<th>${key}</th>`;
-      });
-      table += "</tr>";
-
-      // Wiersze
-      data.forEach(row => {
-        table += "<tr>";
-        Object.keys(row).forEach(key => {
-          if (key !== "_id") table += `<td>${row[key]}</td>`;
-        });
-        table += "</tr>";
-      });
-
-      table += "</table>";
-      document.getElementById("output").innerHTML = table;
-    }
-  </script>
+    <section>
+        <h2>🌐 Dane z API zewnętrznego</h2>
+        <button onclick="fetchExternal()">Pobierz dane</button>
+        <pre id="external-data"></pre>
+    </section>
 </body>
 </html>

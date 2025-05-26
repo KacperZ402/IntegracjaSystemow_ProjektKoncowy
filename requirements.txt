@@ -6,3 +6,9 @@ motor
 python-jose
 passlib[bcrypt]
 fastapi[all]
+uvicorn
+httpx
+python-multipart
+sqlmodel
+pydantic
+pyjwt

@@ -1,0 +1,122 @@
+[
+  {
+    "year":2010,
+    "sector":"WYSZCZEGÓLNIENIE \nSPECIFICATION",
+    "value_mln_pln":2010.0
+  },
+  {
+    "year":2015,
+    "sector":"WYSZCZEGÓLNIENIE \nSPECIFICATION",
+    "value_mln_pln":2015.0
+  },
+  {
+    "year":2018,
+    "sector":"WYSZCZEGÓLNIENIE \nSPECIFICATION",
+    "value_mln_pln":2018.0
+  },
+  {
+    "year":2019,
+    "sector":"WYSZCZEGÓLNIENIE \nSPECIFICATION",
+    "value_mln_pln":2019.0
+  },
+  {
+    "year":2010,
+    "sector":"OGÓŁEM",
+    "value_mln_pln":185470.3
+  },
+  {
+    "year":2015,
+    "sector":"OGÓŁEM",
+    "value_mln_pln":228329.0
+  },
+  {
+    "year":2018,
+    "sector":"OGÓŁEM",
+    "value_mln_pln":285121.0
+  },
+  {
+    "year":2019,
+    "sector":"OGÓŁEM",
+    "value_mln_pln":296450.3
+  },
+  {
+    "year":2010,
+    "sector":"Górnictwo i wydobywanie",
+    "value_mln_pln":1060.8
+  },
+  {
+    "year":2015,
+    "sector":"Górnictwo i wydobywanie",
+    "value_mln_pln":1014.6
+  },
+  {
+    "year":2018,
+    "sector":"Górnictwo i wydobywanie",
+    "value_mln_pln":959.8
+  },
+  {
+    "year":2019,
+    "sector":"Górnictwo i wydobywanie",
+    "value_mln_pln":907.2
+  },
+  {
+    "year":2010,
+    "sector":"Przetwórstwo przemysłowe",
+    "value_mln_pln":144448.0
+  },
+  {
+    "year":2015,
+    "sector":"Przetwórstwo przemysłowe",
+    "value_mln_pln":179595.0
+  },
+  {
+    "year":2018,
+    "sector":"Przetwórstwo przemysłowe",
+    "value_mln_pln":229282.8
+  },
+  {
+    "year":2019,
+    "sector":"Przetwórstwo przemysłowe",
+    "value_mln_pln":243259.5
+  },
+  {
+    "year":2010,
+    "sector":"Wytwarzanie i zaopatrywanie w energię elektryczną, \n   gaz, parę wodną i gorącą wodęΔ",
+    "value_mln_pln":36055.3
+  },
+  {
+    "year":2015,
+    "sector":"Wytwarzanie i zaopatrywanie w energię elektryczną, \n   gaz, parę wodną i gorącą wodęΔ",
+    "value_mln_pln":42929.8
+  },
+  {
+    "year":2018,
+    "sector":"Wytwarzanie i zaopatrywanie w energię elektryczną, \n   gaz, parę wodną i gorącą wodęΔ",
+    "value_mln_pln":49090.0
+  },
+  {
+    "year":2019,
+    "sector":"Wytwarzanie i zaopatrywanie w energię elektryczną, \n   gaz, parę wodną i gorącą wodęΔ",
+    "value_mln_pln":45066.2
+  },
+  {
+    "year":2010,
+    "sector":"Dostawa wody; gospodarowanie ściekami \n   i odpadami; rekultywacjaΔ",
+    "value_mln_pln":3906.2
+  },
+  {
+    "year":2015,
+    "sector":"Dostawa wody; gospodarowanie ściekami \n   i odpadami; rekultywacjaΔ",
+    "value_mln_pln":4789.6
+  },
+  {
+    "year":2018,
+    "sector":"Dostawa wody; gospodarowanie ściekami \n   i odpadami; rekultywacjaΔ",
+    "value_mln_pln":5788.4
+  },
+  {
+    "year":2019,
+    "sector":"Dostawa wody; gospodarowanie ściekami \n   i odpadami; rekultywacjaΔ",
+    "value_mln_pln":7217.4
+  }
+]
