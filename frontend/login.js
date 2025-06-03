@@ -6,7 +6,7 @@ async function login(event) {
   const response = await fetch("/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `username=${username}&password=${password}`
+    body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
   });
 
   const data = await response.json();
@@ -16,5 +16,17 @@ async function login(event) {
     window.location.href = "/";
   } else {
     document.getElementById("error").textContent = "❌ Błędna nazwa użytkownika lub hasło.";
+  }
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle("light-mode");
+  const icon = document.querySelector(".dark-mode-toggle i");
+  if (document.body.classList.contains("light-mode")) {
+    icon.classList.remove("fa-moon");
+    icon.classList.add("fa-sun");
+  } else {
+    icon.classList.remove("fa-sun");
+    icon.classList.add("fa-moon");
   }
 }

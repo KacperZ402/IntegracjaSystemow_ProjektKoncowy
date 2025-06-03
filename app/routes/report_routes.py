@@ -1,32 +1,53 @@
-from fastapi import APIRouter, HTTPException, Query
-from app.models import IndustrialProduction, AirEmission, Wastewater
-from app.database import engine
+from fastapi import APIRouter, Query
+from app.database import client
+import re
 
 router = APIRouter()
 
-@router.get("/report")
-async def generate_report(year: int = Query(..., ge=1900, le=2100)):
-    industrial = await engine.find(IndustrialProduction, IndustrialProduction.year == year)
-    emissions = await engine.find(AirEmission, AirEmission.year == year)
-    wastewater = await engine.find(Wastewater, Wastewater.year == year)
+def get_year_from_key(collection_name, key):
+    if collection_name in ["emisja_zanieczyszczen_gazowych", "emisja_zanieczyszczen_pylowych",
+                           "grunty_wylaczone", "moc_instalowana", "scieki_przemyslowe", "zuzycie_energii"]:
+        match = re.search(r";(\d{4});", key)
+        if match:
+            return int(match.group(1))
+    elif collection_name in ["produkcja_budowlana", "produkcja_sprzedana"]:
+        matches = re.findall(r"(\d{4})", key)
+        if matches:
+            return int(matches[-1])
+    else:
+        matches = re.findall(r"(\d{4})", key)
+        if matches:
+            return int(matches[-1])
+    return None
 
-    industrial_data = [i.dict(exclude={"id"}) for i in industrial]
-    emissions_data = [e.dict(exclude={"id"}) for e in emissions]
-    wastewater_data = [w.dict(exclude={"id"}) for w in wastewater]
+@router.get("/report/{collection_name}")
+async def generate_report(collection_name: str, year: int = Query(...)):
+    collection = client["integracja"][collection_name]
+    data = await collection.find().to_list(length=None)
 
+    regions = []
 
-    report = {
+    for doc in data:
+        region_name = doc.get("Nazwa", "Nieznany")
+        region_total = 0
+
+        for key, value in doc.items():
+            found_year = get_year_from_key(collection_name, key)
+            if found_year == year and value is not None and str(value).strip() != "":
+                try:
+                    value_str = str(value).replace(",", ".")
+                    region_total += float(value_str)
+                    print(f"Sumuję: {region_name}: {key} => {value} (rok={found_year})")
+                except Exception as e:
+                    print(f"Błąd przy przetwarzaniu {key}: {e}")
+
+        regions.append({
+            "region": region_name,
+            "total": region_total
+        })
+
+    print(f"TOTALS: {regions}")
+    return {
         "year": year,
-        "summary": {
-            "industrial_total_mln_pln": sum(i["value_mln_pln"] for i in industrial_data),
-            "emissions_total_tonnes": sum(e["amount_tonnes"] for e in emissions_data),
-            "wastewater_total_hm3": sum(w["volume_hm3"] for w in wastewater_data),
-        },
-        "details": {
-            "industrial": industrial_data,
-            "emissions": emissions_data,
-            "wastewater": wastewater_data,
-        }
+        "regions": regions
     }
-
-    return report

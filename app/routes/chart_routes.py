@@ -1,43 +1,92 @@
-from fastapi import APIRouter, Depends
-from fastapi.responses import FileResponse
-from app.database import engine
-from app.models import IndustrialProduction, AirEmission, Wastewater
+from fastapi import APIRouter, HTTPException
+from fastapi.responses import StreamingResponse
+from app.database import client
+import io
 import matplotlib.pyplot as plt
-import pandas as pd
+import re
 
 router = APIRouter()
 
-@router.get("/charts/{kind}")
-async def generate_chart(kind: str):
-    if kind == "industrial":
-        records = await engine.find(IndustrialProduction)
-        df = pd.DataFrame([r.dict(exclude={"id"}) for r in records])
-        df = df.groupby("year")["value_mln_pln"].sum().reset_index()
-        ylabel = "mln PLN"
-        title = "Produkcja przemysłowa"
-    elif kind == "emissions":
-        records = await engine.find(AirEmission)
-        df = pd.DataFrame([r.dict(exclude={"id"}) for r in records])
-        df = df.groupby("year")["amount_tonnes"].sum().reset_index()
-        ylabel = "tony"
-        title = "Emisja zanieczyszczeń"
-    elif kind == "wastewater":
-        records = await engine.find(Wastewater)
-        df = pd.DataFrame([r.dict(exclude={"id"}) for r in records])
-        df = df.groupby("year")["volume_hm3"].sum().reset_index()
-        ylabel = "hm³"
-        title = "Ścieki odprowadzane"
+def get_year_from_key(collection_name, key):
+    if collection_name in [
+        "emisja_zanieczyszczen_gazowych", "emisja_zanieczyszczen_pylowych",
+        "grunty_wylaczone", "moc_instalowana", "scieki_przemyslowe", "zuzycie_energii"
+    ]:
+        match = re.search(r";(\d{4});", key)
+        if match:
+            return int(match.group(1))
+    elif collection_name in ["produkcja_budowlana", "produkcja_sprzedana"]:
+        matches = re.findall(r"(\d{4})", key)
+        if matches:
+            return int(matches[-1])
     else:
-        return {"error": "Nieznany typ wykresu"}
+        matches = re.findall(r"(\d{4})", key)
+        if matches:
+            return int(matches[-1])
+    return None
 
-    plt.figure()
-    plt.plot(df["year"], df.iloc[:, 1], marker='o')
-    plt.title(title)
+# 🔷 PNG - wykres liniowy
+@router.get("/charts/{collection_name}.png")
+async def get_chart_png(collection_name: str):
+    collection = client["integracja"][collection_name]
+    data = await collection.find().to_list(length=None)
+
+    totals = {}
+    for doc in data:
+        for key, value in doc.items():
+            year = get_year_from_key(collection_name, key)
+            if year and value is not None and str(value).strip() != "":
+                try:
+                    amount = float(str(value).replace(",", "."))
+                    totals[year] = totals.get(year, 0) + amount
+                except Exception as e:
+                    print(f"Błąd w polu {key}: {e}")
+
+    if not totals:
+        raise HTTPException(status_code=404, detail="Brak danych do wykresu")
+
+    years = sorted(totals.keys())
+    values = [totals[year] for year in years]
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(years, values, marker='o', linestyle='-', color='blue')
     plt.xlabel("Rok")
-    plt.ylabel(ylabel)
+    plt.ylabel("Wartość")
+    plt.title(f"Wykres danych (liniowy): {collection_name}")
     plt.grid(True)
+    plt.tight_layout()
 
-    path = f"frontend/wykres_{kind}.png"
-    plt.savefig(path)
+    buf = io.BytesIO()
+    plt.savefig(buf, format="png")
     plt.close()
-    return FileResponse(path, media_type="image/png")
+    buf.seek(0)
+
+    return StreamingResponse(buf, media_type="image/png")
+
+# 🔷 JSON - dane interaktywne
+@router.get("/charts/{collection_name}")
+async def generate_chart(collection_name: str):
+    collection = client["integracja"][collection_name]
+    data = await collection.find().to_list(length=None)
+
+    region_data = {}
+
+    for doc in data:
+        region_name = doc.get("Nazwa", "Nieznany")
+        if region_name not in region_data:
+            region_data[region_name] = []
+
+        for key, value in doc.items():
+            year = get_year_from_key(collection_name, key)
+            if year and value is not None and str(value).strip() != "":
+                try:
+                    amount = float(str(value).replace(",", "."))
+                    region_data[region_name].append({"year": year, "amount": amount})
+                except Exception as e:
+                    print(f"Błąd w polu {key}: {e}")
+
+    # 🔥 Dodaj sprawdzenie pustych danych
+    if not region_data:
+        raise HTTPException(status_code=404, detail="Brak danych do interaktywnego wykresu")
+
+    return [{"region": region, "data": sorted(entries, key=lambda x: x["year"])} for region, entries in region_data.items()]
