@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Logowanie – Integracja Danych</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script defer src="/static/login.js"></script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>🔐 Logowanie do systemu</h2>
+    <form onsubmit="login(event)">
+      <input type="text" id="username" placeholder="👤 Login" required>
+      <input type="password" id="password" placeholder="🔑 Hasło" required>
+      <button type="submit">Zaloguj</button>
+      <p id="error" class="error-msg"></p>
+    </form>
+  </div>
+</body>
+</html>

@@ -7,7 +7,8 @@ import os
 
 from app.auth import authenticate_user, create_access_token
 from app.routes import crud_routes, import_export_routes
-from app import rest_api  # ⬅️ IMPORT REST API
+from app.routes import report_routes, correlation_routes, chart_routes
+from app import rest_api
 
 app = FastAPI()
 
@@ -20,14 +21,23 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     token = create_access_token(data={"sub": user["username"]}, expires_delta=timedelta(minutes=30))
     return {"access_token": token, "token_type": "bearer"}
 
-# --- Routery modularne ---
+# --- Routery aplikacji ---
 app.include_router(crud_routes.router)
 app.include_router(import_export_routes.router)
-app.include_router(rest_api.router)  # ⬅️ TU DODAJEMY
+app.include_router(rest_api.router)
+app.include_router(report_routes.router)
+app.include_router(correlation_routes.router)
+app.include_router(chart_routes.router)
 
-# --- Frontend statyczny ---
+# --- Pliki statyczne ---
 app.mount("/static", StaticFiles(directory="frontend", html=True), name="static")
 
+# --- Serwowanie strony głównej (panel) ---
 @app.get("/")
 async def serve_index():
-    return FileResponse(os.path.join("frontend", "index.html"))
+    return FileResponse("frontend/index.html")
+
+# --- Serwowanie strony logowania ---
+@app.get("/login")
+async def serve_login():
+    return FileResponse("frontend/login.html")

@@ -22,7 +22,7 @@ class Wastewater(Model):
 # === KONFIGURACJA BAZY ===
 MONGO_URI = "mongodb+srv://admin:admin@cluster0.7fugtco.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 client = AsyncIOMotorClient(MONGO_URI)
-engine = AIOEngine(client, database="integration_project")
+engine = AIOEngine(client, database="integracja")
 
 # === FUNKCJE IMPORTUJĄCE ===
 async def import_data():

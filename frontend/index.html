@@ -1,52 +1,85 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Projekt Integracji</title>
-    <script defer src="/static/app.js"></script>
-    <link rel="stylesheet" href="/static/styles.css">
+  <meta charset="UTF-8">
+  <title>Panel użytkownika</title>
+  <script defer src="/static/app.js"></script>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        window.location.href = "/login";
+      }
+    });
+  </script>
 </head>
 <body>
-    <h1>Integracja danych – Panel użytkownika</h1>
+  <h1>📊 Panel Integracji Danych</h1>
 
-    <section>
-        <h2>🔐 Logowanie</h2>
-        <input type="text" id="username" placeholder="Login">
-        <input type="password" id="password" placeholder="Hasło">
-        <button onclick="login()">Zaloguj</button>
-        <p id="token-status"></p>
-    </section>
+  <div class="top-bar">
+    <span>👋 Witaj, <strong id="user-name">...</strong></span>
+    <button onclick="logout()">🚪 Wyloguj</button>
+  </div>
 
-    <section>
-        <h2>📤 Eksport danych</h2>
-        <select id="collection-export">
-            <option value="industrial">Przemysł</option>
-            <option value="emissions">Emisje</option>
-            <option value="wastewater">Ścieki</option>
-        </select>
-        <select id="format-export">
-            <option value="json">JSON</option>
-            <option value="xml">XML</option>
-            <option value="yaml">YAML</option>
-        </select>
-        <button onclick="exportData()">Eksportuj</button>
-    </section>
+  <section>
+    <h2>📥 Import danych</h2>
+    <select id="collection-import">
+      <option value="industrial">Przemysł</option>
+      <option value="emissions">Emisje</option>
+      <option value="wastewater">Ścieki</option>
+    </select>
+    <input type="file" id="import-file">
+    <button onclick="importData()">Importuj</button>
+  </section>
 
-    <section>
-        <h2>📥 Import danych</h2>
-        <select id="collection-import">
-            <option value="industrial">Przemysł</option>
-            <option value="emissions">Emisje</option>
-            <option value="wastewater">Ścieki</option>
-        </select>
-        <input type="file" id="import-file">
-        <button onclick="importData()">Importuj</button>
-    </section>
+  <section>
+    <h2>📤 Eksport danych</h2>
+    <select id="collection-export">
+      <option value="industrial">Przemysł</option>
+      <option value="emissions">Emisje</option>
+      <option value="wastewater">Ścieki</option>
+    </select>
+    <select id="format-export">
+      <option value="json">JSON</option>
+      <option value="xml">XML</option>
+      <option value="yaml">YAML</option>
+    </select>
+    <button onclick="exportData()">Eksportuj</button>
+  </section>
 
-    <section>
-        <h2>🌐 Dane z API zewnętrznego</h2>
-        <button onclick="fetchExternal()">Pobierz dane</button>
-        <pre id="external-data"></pre>
-    </section>
+  <section>
+    <h2>📊 Raport roczny</h2>
+    <input type="number" id="report-year" placeholder="np. 2020" />
+    <button onclick="generateReport()">Pokaż raport</button>
+    <pre id="report-output"></pre>
+  </section>
+
+  <section>
+    <h2>🔁 Korelacja: Produkcja vs Emisje</h2>
+    <button onclick="checkCorrelation()">Oblicz korelację</button>
+    <pre id="correlation-output"></pre>
+  </section>
+
+  <section>
+    <h2>🌐 Dane z API zewnętrznego</h2>
+    <button onclick="fetchExternal()">Pobierz dane</button>
+    <pre id="external-data"></pre>
+  </section>
+
+  <section>
+    <h2>📈 Wykresy (PNG z backendu)</h2>
+    <img src="/charts/industrial" alt="Produkcja">
+    <img src="/charts/emissions" alt="Emisje">
+    <img src="/charts/wastewater" alt="Ścieki">
+  </section>
+
+  <section>
+    <h2>📊 Interaktywny wykres z danych rocznych</h2>
+    <input type="number" id="chart-year" placeholder="np. 2019">
+    <button onclick="drawChart(document.getElementById('chart-year').value)">Pokaż wykres</button>
+    <canvas id="myChart" width="800" height="400"></canvas>
+  </section>
 </body>
 </html>

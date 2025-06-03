@@ -34,9 +34,9 @@ async def export_data(
         raise HTTPException(status_code=404, detail="Nieznana kolekcja")
 
     records = await engine.find(Model)
-    data = [r.dict() for r in records]
 
     if format == "json":
+        data = [r.dict(exclude={"id"}) for r in records]
         return JSONResponse(content=data)
     elif format == "xml":
         xml_data = dict_list_to_xml(collection_name, data)
